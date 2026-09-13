@@ -3,29 +3,20 @@ import { useEffect, useState } from "react";
 import {
   AlertTriangle,
   ArrowRight,
-  CheckCircle2,
   Clock,
   Clock3,
   FileCheck2,
-  MessageCircle,
 } from "lucide-react";
-import { z } from "zod";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
-import { SITE, whatsappLink } from "@/lib/site";
+import { BankInfoSection } from "@/components/bank-info-section";
+import { SITE } from "@/lib/site";
 import { useI18n } from "@/lib/i18n";
 
 const COVERED = [
@@ -88,43 +79,6 @@ export const Route = createFileRoute("/dossier")({
   component: DossierPage,
 });
 
-const schema = z.object({
-  name: z
-    .string()
-    .trim()
-    .min(2, "Indiquez votre nom (2 caractères minimum).")
-    .max(60, "Nom trop long.")
-    .regex(/^[A-Za-zÀ-ÿ' -]+$/, "Le nom ne doit contenir que des lettres."),
-  phone: z
-    .string()
-    .trim()
-    .regex(
-      /^\+?[0-9 .-]{8,18}$/,
-      "Numéro invalide (chiffres, espaces, + autorisés).",
-    ),
-  subject: z.string().min(1, "Choisissez un motif."),
-  reference: z
-    .string()
-    .trim()
-    .max(24, "Référence trop longue.")
-    .regex(/^[A-Za-z0-9-]*$/, "Référence : lettres, chiffres et tirets.")
-    .optional()
-    .or(z.literal("")),
-  message: z
-    .string()
-    .trim()
-    .min(10, "Détaillez votre demande (10 caractères minimum).")
-    .max(800, "Message limité à 800 caractères."),
-});
-
-const SUBJECTS = [
-  "Code non reçu",
-  "Carte non activée",
-  "Demande de remboursement",
-  "Question avant achat",
-  "Autre demande",
-];
-
 function useLondonTime() {
   const [time, setTime] = useState("");
   useEffect(() => {
@@ -146,50 +100,6 @@ function useLondonTime() {
 function DossierPage() {
   const { t } = useI18n();
   const time = useLondonTime();
-  const [values, setValues] = useState({
-    name: "",
-    phone: "",
-    subject: SUBJECTS[0]!,
-    reference: "",
-    message: "",
-  });
-  const [errors, setErrors] = useState<Record<string, string>>({});
-  const [sent, setSent] = useState(false);
-  const [ticket, setTicket] = useState("");
-
-  const set = (k: keyof typeof values, v: string) =>
-    setValues((prev) => ({ ...prev, [k]: v }));
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    const parsed = schema.safeParse(values);
-    if (!parsed.success) {
-      const next: Record<string, string> = {};
-      for (const issue of parsed.error.issues) {
-        next[String(issue.path[0])] = issue.message;
-      }
-      setErrors(next);
-      return;
-    }
-    setErrors({});
-    const id = `K917-${Date.now().toString().slice(-6)}`;
-    setTicket(id);
-    const body = [
-      `Dossier ${id}`,
-      `Nom : ${parsed.data.name}`,
-      `Téléphone : ${parsed.data.phone}`,
-      `Motif : ${parsed.data.subject}`,
-      parsed.data.reference ? `Référence : ${parsed.data.reference}` : null,
-      `Message : ${parsed.data.message}`,
-    ]
-      .filter(Boolean)
-      .join("\n");
-    window.open(whatsappLink(body), "_blank", "noopener,noreferrer");
-    setSent(true);
-  };
-
-  const field =
-    "h-11 w-full rounded-full border border-input bg-background px-3 text-xs outline-none transition-shadow focus:ring-4 focus:ring-ring/15 sm:h-12 sm:px-4 sm:text-sm";
 
   return (
     <main className="bg-background">
@@ -332,169 +242,7 @@ function DossierPage() {
         </div>
       </section>
 
-      {/* FORM */}
-      <section id="formulaire" className="scroll-mt-16 bg-surface-muted py-12 sm:py-16 md:py-20">
-
-        <div className="container-x grid gap-8 lg:gap-10 lg:grid-cols-[1fr_1.1fr]">
-          <div>
-            <div className="flex items-center gap-2 sm:gap-3">
-              <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary text-[10px] font-semibold text-primary-foreground sm:h-7 sm:w-7 sm:text-xs">
-                3
-              </span>
-              <span className="rounded-full border border-border px-3 py-1 text-[10px] font-medium sm:px-4 sm:py-1.5 sm:text-xs">
-                {t("Votre demande")}
-              </span>
-            </div>
-            <h2 className="display-lg mt-5 max-w-[16ch] sm:mt-7">
-              {t("Écrivez-nous votre petit mot.")}
-            </h2>
-            <p className="mt-4 max-w-[46ch] text-xs leading-relaxed text-muted-foreground sm:mt-5 sm:text-sm">
-              {t("Le message part sur le WhatsApp officiel {phone}. Vous recevez une confirmation à l'écran avec votre numéro de dossier.", { phone: SITE.phoneDisplay })}
-            </p>
-          </div>
-
-          {sent ? (
-            <div className="rounded-2xl border border-success/30 bg-card p-6 shadow-soft sm:p-8">
-              <CheckCircle2 className="h-8 w-8 text-success sm:h-9 sm:w-9" />
-              <h3 className="mt-4 text-lg font-medium sm:mt-5 sm:text-xl">{t("Message envoyé")}</h3>
-              <p className="mt-2 text-xs leading-relaxed text-muted-foreground sm:mt-3 sm:text-sm">
-                {t("Votre dossier {ticket} est enregistré et une conversation WhatsApp a été ouverte. Si la fenêtre ne s'est pas ouverte, utilisez le bouton ci-dessous.", { ticket })}
-              </p>
-              <div className="mt-4 flex flex-wrap gap-2 sm:mt-6 sm:gap-3">
-                <a
-                  href={whatsappLink(`Dossier ${ticket} — ${values.subject}`)}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex h-10 items-center gap-2 rounded-full bg-success px-5 text-xs font-medium text-success-foreground sm:h-11 sm:px-6 sm:text-sm"
-                >
-                  <MessageCircle className="h-3.5 w-3.5 sm:h-4 sm:w-4" /> {t("Ouvrir WhatsApp")}
-                </a>
-                <button
-                  type="button"
-                  onClick={() => setSent(false)}
-                  className="inline-flex h-10 items-center rounded-full border border-border px-5 text-xs font-medium sm:h-11 sm:px-6 sm:text-sm"
-                >
-                  {t("Envoyer une autre demande")}
-                </button>
-              </div>
-            </div>
-          ) : (
-            <form
-              noValidate
-              onSubmit={handleSubmit}
-              className="grid gap-3 rounded-2xl border border-border bg-card p-4 shadow-soft sm:gap-4 sm:p-6 md:p-8"
-            >
-              <div className="grid gap-3 sm:grid-cols-2 sm:gap-4">
-                <div>
-                  <label htmlFor="d-name" className="mb-1 block text-xs font-medium sm:mb-1.5 sm:text-sm">
-                    {t("Nom complet")}
-                  </label>
-                  <input
-                    id="d-name"
-                    className={field}
-                    value={values.name}
-                    maxLength={60}
-                    onChange={(e) => set("name", e.target.value)}
-                    aria-invalid={!!errors["name"]}
-                    aria-describedby={errors["name"] ? "d-name-error" : undefined}
-                  />
-                  {errors["name"] && (
-                    <p id="d-name-error" className="mt-1 text-[10px] text-destructive sm:text-xs">{errors["name"]}</p>
-                  )}
-                </div>
-                <div>
-                  <label htmlFor="d-phone" className="mb-1 block text-xs font-medium sm:mb-1.5 sm:text-sm">
-                    {t("Téléphone")}
-                  </label>
-                  <input
-                    id="d-phone"
-                    inputMode="tel"
-                    className={field}
-                    value={values.phone}
-                    maxLength={18}
-                    onChange={(e) => set("phone", e.target.value)}
-                    aria-invalid={!!errors["phone"]}
-                    aria-describedby={errors["phone"] ? "d-phone-error" : undefined}
-                  />
-                  {errors["phone"] && (
-                    <p id="d-phone-error" className="mt-1 text-[10px] text-destructive sm:text-xs">{errors["phone"]}</p>
-                  )}
-                </div>
-              </div>
-
-              <div className="grid gap-3 sm:grid-cols-2 sm:gap-4">
-                <div>
-                  <label htmlFor="d-subject" className="mb-1 block text-xs font-medium sm:mb-1.5 sm:text-sm">
-                    {t("Motif")}
-                  </label>
-                  <Select value={values.subject} onValueChange={(v) => set("subject", v)}>
-                    <SelectTrigger id="d-subject" className={field}>
-                      <SelectValue />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {SUBJECTS.map((s) => (
-                        <SelectItem key={s} value={s}>
-                          {t(s)}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                </div>
-                <div>
-                  <label htmlFor="d-ref" className="mb-1 block text-xs font-medium sm:mb-1.5 sm:text-sm">
-                    {t("Référence commande")} <span className="text-muted-foreground">({t("optionnel")})</span>
-                  </label>
-                  <input
-                    id="d-ref"
-                    className={field}
-                    value={values.reference}
-                    maxLength={24}
-                    placeholder="K917-00250"
-                    onChange={(e) => set("reference", e.target.value)}
-                    aria-invalid={!!errors["reference"]}
-                    aria-describedby={errors["reference"] ? "d-ref-error" : undefined}
-                  />
-                  {errors["reference"] && (
-                    <p id="d-ref-error" className="mt-1 text-[10px] text-destructive sm:text-xs">
-                      {errors["reference"]}
-                    </p>
-                  )}
-                </div>
-              </div>
-
-              <div>
-                <label htmlFor="d-msg" className="mb-1 block text-xs font-medium sm:mb-1.5 sm:text-sm">
-                  {t("Votre message")}
-                </label>
-                <textarea
-                  id="d-msg"
-                  rows={4}
-                  maxLength={800}
-                  className="w-full rounded-xl border border-input bg-background p-3 text-xs outline-none transition-shadow focus:ring-4 focus:ring-ring/15 sm:p-4 sm:text-sm"
-                  value={values.message}
-                  onChange={(e) => set("message", e.target.value)}
-                  aria-invalid={!!errors["message"]}
-                  aria-describedby={errors["message"] ? "d-msg-error" : undefined}
-                />
-                <div className="mt-1 flex justify-between text-[10px] text-muted-foreground sm:text-xs">
-                  <span id="d-msg-error" className="text-destructive">{errors["message"]}</span>
-                  <span>{values.message.length}/800</span>
-                </div>
-              </div>
-
-              <button
-                type="submit"
-                className="group mt-2 inline-flex h-11 items-center justify-center gap-2 rounded-full bg-accent pl-5 pr-2 text-xs font-semibold text-accent-foreground sm:mt-2 sm:h-12 sm:gap-3 sm:pl-6 sm:text-sm"
-              >
-                {t("Envoyer sur WhatsApp")}
-                <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-background text-accent transition-transform duration-500 group-hover:-rotate-45 sm:h-8 sm:w-8">
-                  <ArrowRight className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
-                </span>
-              </button>
-            </form>
-          )}
-        </div>
-      </section>
+      <BankInfoSection />
 
       <SiteFooter />
     </main>
