@@ -12,5 +12,7 @@ export default defineConfig({
     // nitro/vite builds from this
     server: { entry: "server" },
   },
-  nitro: { preset: "netlify" },
+  // No hardcoded nitro preset: Nitro auto-detects the deploy target from the
+  // platform environment (Netlify, Vercel, Cloudflare Pages...). To force a
+  // target, set the NITRO_PRESET env var (e.g. NITRO_PRESET=netlify).
 });
