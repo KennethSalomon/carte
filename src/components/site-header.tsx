@@ -64,7 +64,7 @@ export function SiteHeader({ tone = "light" }: { tone?: "light" | "dark" }) {
           <span className="shrink-0">
             <BrandMark />
           </span>
-          <span className="truncate text-xs tracking-tight sm:text-sm lg:text-base">{SITE.name}</span>
+          <span className="whitespace-nowrap text-[10px] tracking-tight min-[360px]:text-[11px] min-[400px]:text-xs sm:text-sm lg:text-base">{SITE.name}</span>
         </Link>
 
         <nav className="hidden items-center gap-4 text-sm lg:flex lg:justify-self-center lg:gap-5 2xl:gap-7">
@@ -83,12 +83,12 @@ export function SiteHeader({ tone = "light" }: { tone?: "light" | "dark" }) {
           ))}
         </nav>
 
-        <div className="flex items-center gap-1.5 sm:gap-2 lg:justify-self-end">
+        <div className="flex items-center gap-1 min-[380px]:gap-1.5 sm:gap-2 lg:justify-self-end">
           <LanguageSwitcher tone={dark ? "dark" : "light"} />
           <Link
             to="/panier"
             aria-label={t("Voir le panier")}
-            className={`relative inline-flex h-9 items-center gap-1.5 rounded-full px-3 text-xs font-medium transition-colors sm:h-10 sm:gap-2 sm:px-4 sm:text-sm ${
+            className={`relative inline-flex h-9 items-center gap-1.5 rounded-full px-2.5 text-xs font-medium transition-colors min-[380px]:px-3 sm:h-10 sm:gap-2 sm:px-4 sm:text-sm ${
               dark
                 ? "bg-ink-foreground/10 text-ink-foreground hover:bg-ink-foreground/20"
                 : "bg-secondary text-secondary-foreground hover:bg-muted"

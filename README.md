@@ -1217,16 +1217,6 @@ Steps to integrate
  3. Use lucide-react icons for svgs or logos if component requires them
 ] et après validation de  l achat, une mini fenettre s ouvre doucement + temps de l attence d affichage avant de dire que le paiement a été validé . Ne permet pas la validations  des caractères qui n ont rien avoir avec les informations de comptes/cartes bancaires ...Que le site entier logique et responsive offrant une belle expérience utilisateur .
 
-This project was built with [Lovable](https://lovable.dev).
-
-## Build with Lovable
-
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/ed6a743e-a041-486b-82a4-4d2671eb8c00).
-
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
-
 ## Development
 
 Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
