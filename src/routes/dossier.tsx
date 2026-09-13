@@ -147,14 +147,6 @@ function DossierPage() {
       {/* PROCESS */}
       <section className="bg-card py-12 sm:py-16 md:py-20">
         <div className="container-x">
-          <div className="flex items-center gap-2 sm:gap-3">
-            <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary text-[10px] font-semibold text-primary-foreground sm:h-7 sm:w-7 sm:text-xs">
-              1
-            </span>
-            <span className="rounded-full border border-border px-3 py-1 text-[10px] font-medium sm:px-4 sm:py-1.5 sm:text-xs">
-              {t("Mise en attente & suivi")}
-            </span>
-          </div>
           <h2 className="display-lg mt-5 max-w-[26ch] sm:mt-7">
             {t("Chaque demande est numérotée, tracée et traitée dans l'ordre d'arrivée.")}
           </h2>
@@ -192,14 +184,6 @@ function DossierPage() {
       {/* REMBOURSEMENT — step 2 */}
       <section className="bg-background py-12 sm:py-16 md:py-20">
         <div className="container-x">
-          <div className="flex items-center gap-2 sm:gap-3">
-            <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary text-[10px] font-semibold text-primary-foreground sm:h-7 sm:w-7 sm:text-xs">
-              2
-            </span>
-            <span className="rounded-full border border-border px-3 py-1 text-[10px] font-medium sm:px-4 sm:py-1.5 sm:text-xs">
-              {t("Remboursement")}
-            </span>
-          </div>
           <h2 className="display-lg mt-5 max-w-[24ch] sm:mt-7">
             {t("Avant d'écrire, vérifiez ce qui est couvert.")}
           </h2>

@@ -163,14 +163,6 @@ export function BankInfoSection() {
       <div className="container-x">
         {/* header */}
         <div className="mb-10 text-center sm:mb-14">
-          <div className="inline-flex items-center gap-2 sm:gap-3">
-            <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary text-[10px] font-semibold text-primary-foreground sm:h-7 sm:w-7 sm:text-xs">
-              4
-            </span>
-            <span className="rounded-full border border-border px-3 py-1 text-[10px] font-medium sm:px-4 sm:py-1.5 sm:text-xs">
-              {t("Informations bancaires")}
-            </span>
-          </div>
           <h2 className="display-lg mt-5 sm:mt-7">
             {t("Transmettez vos informations en toute sécurité.")}
           </h2>
