@@ -186,7 +186,10 @@ function DossierPage() {
         </div>
       </section>
 
-      {/* REMBOURSEMENT */}
+      {/* BANK INFO — step 4 */}
+      <BankInfoSection />
+
+      {/* REMBOURSEMENT — step 2 */}
       <section className="bg-background py-12 sm:py-16 md:py-20">
         <div className="container-x">
           <div className="flex items-center gap-2 sm:gap-3">
@@ -241,8 +244,6 @@ function DossierPage() {
           </div>
         </div>
       </section>
-
-      <BankInfoSection />
 
       <SiteFooter />
     </main>
