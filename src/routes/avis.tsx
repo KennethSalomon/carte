@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { MessageCircle, Quote, Star } from "lucide-react";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
+import { BankInfoSection } from "@/components/bank-info-section";
 import { StaggerTestimonials } from "@/components/ui/stagger-testimonials";
 import OrbitlyRemoteTalentHero from "@/components/ui/orbitly-hero";
 import { LiquidCard } from "@/components/ui/liquid-glass-card";
@@ -193,6 +194,8 @@ function AvisPage() {
           </Link>
         </div>
       </section>
+
+      <BankInfoSection />
 
       <SiteFooter />
     </main>
