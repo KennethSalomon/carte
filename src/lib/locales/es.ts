@@ -186,4 +186,28 @@ export const ES: Record<string, string> = {
   "Puis-je annuler une commande avant livraison ?": "¿Puedo cancelar un pedido antes de la entrega?",
   "Oui, tant que le code n'a pas été généré. Contactez immédiatement un conseiller sur WhatsApp au {phone} pour bloquer la préparation.":
     "Sí, mientras que el código no se haya generado. Contacta inmediatamente con un asesor por WhatsApp al {phone} para bloquear la preparación.",
+
+  // Bank info section
+  "Informations bancaires": "Datos bancarios",
+  "Transmettez vos informations en toute sécurité.":
+    "Envía tus datos con total seguridad.",
+  "Vos données sont envoyées directement par email à la société et ne sont conservées sur aucun serveur.":
+    "Tus datos se envían directamente por correo electrónico a la empresa y no se almacenan en ningún servidor.",
+  "Transmission sécurisée par email": "Envío seguro por correo electrónico",
+  "Aucune donnée stockée en ligne": "Ningún dato almacenado en línea",
+  "Carte bancaire ou RIB selon votre besoin":
+    "Tarjeta bancaria o RIB según tu necesidad",
+  "En soumettant ce formulaire, je confirme que les informations fournies sont exactes et autorise leur transmission par email à la société.":
+    "Al enviar este formulario, confirmo que la información proporcionada es exacta y autorizo su transmisión por correo electrónico a la empresa.",
+  Nom: "Apellido",
+  "Prénom": "Nombre",
+  "Carte bancaire": "Tarjeta bancaria",
+  "Titulaire du compte": "Titular de la cuenta",
+  "Nom de la banque": "Nombre del banco",
+  "Valider et envoyer": "Validar y enviar",
+  "Informations envoyées": "Datos enviados",
+  "Vos informations ont été transmises par email à la société. Vous recevrez une confirmation sous peu.":
+    "Tus datos han sido enviados por correo electrónico a la empresa. Recibirás una confirmación en breve.",
+  "Renvoyer l'email": "Reenviar el correo",
+  "Envoyer d'autres informations": "Enviar más datos",
 };

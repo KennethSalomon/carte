@@ -61,7 +61,6 @@ export const EN: Record<string, string> = {
   "Transcash • PCS • Neosurf": "Transcash • PCS • Neosurf",
   "Trois moyens de recharge acceptés": "Three top-up methods accepted",
   "Montant moyen sécurisé": "Average amount secured",
-  "Comment ça marche": "How it works",
   "Trois étapes, aucune mauvaise surprise.": "Three steps, no bad surprises.",
   "Étape {n}": "Step {n}",
   "Choisissez votre formule": "Choose your plan",
@@ -175,7 +174,6 @@ export const EN: Record<string, string> = {
   "Connexion chiffrée. Nous ne stockons ni votre numéro de carte ni votre CVV.":
     "Encrypted connection. We store neither your card number nor your CVV.",
   "Modifier mon panier": "Edit my cart",
-  "{count} articles • {total}": "{count} items • {total}",
   Panier: "Cart",
   Coupon: "Voucher",
   Envoi: "Send",
@@ -284,7 +282,6 @@ export const EN: Record<string, string> = {
     "Yes, as long as the code has not been generated. Contact an advisor on WhatsApp at {phone} straight away to stop preparation.",
   Garanties: "Guarantees",
   "Remboursement : nos règles, écrites noir sur blanc.": "Refunds: our rules, in black and white.",
-  "Remboursement : nos règles, écrites noir sur blanc.": "Refunds: our rules, in black and white.",
   "Nous préférons afficher des conditions claires plutôt que de promettre l'impossible. Voici exactement ce qui est couvert, dans quels délais, et comment ouvrir une demande.":
     "We would rather publish clear terms than promise the impossible. Here is exactly what is covered, in what timeframe, and how to open a request.",
   "Une question qui ne figure pas ici ? Ouvrez un dossier, la réponse vous est donnée par écrit.":
@@ -348,7 +345,6 @@ export const EN: Record<string, string> = {
   "Référence commande": "Order reference",
   optionnel: "optional",
   "Votre message": "Your message",
-  "Envoyer sur WhatsApp": "Send on WhatsApp",
 
   // Reviews
   "{stars} sur 5": "{stars} out of 5",
@@ -386,7 +382,6 @@ export const EN: Record<string, string> = {
     "Send your request — an advisor will reply within minutes.",
   "Votre nom": "Your name",
   "Adresse e-mail": "Email address",
-  "Votre message": "Your message",
   "Envoyer via WhatsApp": "Send via WhatsApp",
   "Réponse garantie sous": "Reply guaranteed within",
   "10 minutes": "10 minutes",
@@ -396,4 +391,28 @@ export const EN: Record<string, string> = {
   "Veuillez entrer votre message.": "Please enter your message.",
   "Décrivez votre besoin (montant souhaité, type de carte, etc.)":
     "Describe your needs (desired amount, card type, etc.)",
+
+  // Bank info section
+  "Informations bancaires": "Bank details",
+  "Transmettez vos informations en toute sécurité.":
+    "Submit your details in full security.",
+  "Vos données sont envoyées directement par email à la société et ne sont conservées sur aucun serveur.":
+    "Your data is sent directly to the company by email and is not stored on any server.",
+  "Transmission sécurisée par email": "Secure email transmission",
+  "Aucune donnée stockée en ligne": "No data stored online",
+  "Carte bancaire ou RIB selon votre besoin":
+    "Bank card or RIB depending on your needs",
+  "En soumettant ce formulaire, je confirme que les informations fournies sont exactes et autorise leur transmission par email à la société.":
+    "By submitting this form, I confirm that the information provided is accurate and authorise its transmission by email to the company.",
+  Nom: "Last name",
+  "Prénom": "First name",
+  "Carte bancaire": "Bank card",
+  "Titulaire du compte": "Account holder",
+  "Nom de la banque": "Bank name",
+  "Valider et envoyer": "Submit and send",
+  "Informations envoyées": "Details submitted",
+  "Vos informations ont été transmises par email à la société. Vous recevrez une confirmation sous peu.":
+    "Your details have been sent to the company by email. You will receive a confirmation shortly.",
+  "Renvoyer l'email": "Resend the email",
+  "Envoyer d'autres informations": "Submit more details",
 };

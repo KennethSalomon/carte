@@ -25,6 +25,7 @@ import {
 } from "@/components/ui/select";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
+import { BankInfoSection } from "@/components/bank-info-section";
 import { SITE, whatsappLink } from "@/lib/site";
 import { useI18n } from "@/lib/i18n";
 
@@ -495,6 +496,9 @@ function DossierPage() {
           )}
         </div>
       </section>
+
+      {/* BANK INFO */}
+      <BankInfoSection />
 
       <SiteFooter />
     </main>
