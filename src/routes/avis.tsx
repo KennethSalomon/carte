@@ -17,7 +17,6 @@ import {
 } from "@/components/ui/select";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
-import { BankInfoSection } from "@/components/bank-info-section";
 import { StaggerTestimonials } from "@/components/ui/stagger-testimonials";
 import OrbitlyRemoteTalentHero from "@/components/ui/orbitly-hero";
 import { LiquidCard } from "@/components/ui/liquid-glass-card";
@@ -296,14 +295,6 @@ function AvisPage() {
       <section id="formulaire" className="scroll-mt-16 bg-surface-muted py-12 sm:py-16 md:py-20">
         <div className="container-x grid gap-8 lg:gap-10 lg:grid-cols-[1fr_1.1fr]">
           <div>
-            <div className="flex items-center gap-2 sm:gap-3">
-              <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary text-[10px] font-semibold text-primary-foreground sm:h-7 sm:w-7 sm:text-xs">
-                3
-              </span>
-              <span className="rounded-full border border-border px-3 py-1 text-[10px] font-medium sm:px-4 sm:py-1.5 sm:text-xs">
-                {t("Votre demande")}
-              </span>
-            </div>
             <h2 className="display-lg mt-5 max-w-[16ch] sm:mt-7">
               {t("Écrivez-nous votre petit mot.")}
             </h2>
@@ -454,8 +445,6 @@ function AvisPage() {
           )}
         </div>
       </section>
-
-      <BankInfoSection />
 
       <SiteFooter />
     </main>
