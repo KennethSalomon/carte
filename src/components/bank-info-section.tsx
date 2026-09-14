@@ -235,13 +235,14 @@ export function BankInfoSection() {
               </div>
             )}
 
-            {/* RIB visual placeholder */}
+            {/* RIB visual */}
             {paymentType === "rib" && (
-              <div className="flex aspect-[1.75/1] w-full max-w-[420px] items-center justify-center rounded-2xl border-2 border-dashed border-border bg-card mx-auto">
-                <div className="text-center">
-                  <Building2 className="mx-auto h-10 w-10 text-muted-foreground/40" />
-                  <p className="mt-3 text-sm text-muted-foreground">RIB</p>
-                </div>
+              <div className="relative mx-auto w-full max-w-[420px] overflow-hidden rounded-2xl border border-border bg-card shadow-soft">
+                <img
+                  src="/rib.png"
+                  alt="Relevé d'identité bancaire (RIB)"
+                  className="h-auto w-full object-cover"
+                />
               </div>
             )}
 
